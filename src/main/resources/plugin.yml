@@ -1,0 +1,22 @@
+name: BackChatHelper
+version: ${project.version}
+main: com.wilderop.backchat.BackChatHelper
+api-version: "1.21"
+authors: [wilderop]
+description: Ignore, nick, /msg, /r, and proxy mail for SuperSimpleProxyChat
+website: https://github.com/wilderop/BackChatHelper
+commands:
+  ignore:
+    description: Toggle ignoring a player
+    usage: /ignore <player>
+  msg:
+    description: Send a private message (cross-server, queues if offline)
+    usage: /msg <player> <message>
+    aliases: [m, tell, whisper, w]
+  r:
+    description: Reply to the last private message
+    usage: /r <message>
+    aliases: [reply]
+  nick:
+    description: Set a MiniMessage nickname
+    usage: /nick <text> | /nick reset

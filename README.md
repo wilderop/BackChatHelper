@@ -29,4 +29,4 @@ nick-cooldown-seconds: 60
 max-nick-length: 64
 ```
 
-Nicks and ignore lists are stored in `plugins/BackChatHelper/players/<uuid>.yml`.
+Nicks and ignore lists are stored in `plugins/BackChatHelper/players/<uuid>.yml` and also synced through Velocity so they follow the player across backends.

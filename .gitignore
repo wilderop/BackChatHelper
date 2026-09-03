@@ -1,6 +1,5 @@
 target/
-.idea/
+fabric/build/
+fabric/.gradle/
 *.iml
-.classpath
-.project
-.settings/
+.idea/

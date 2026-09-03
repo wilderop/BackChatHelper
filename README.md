@@ -1,32 +1,35 @@
 # BackChatHelper
 
-Paper companion for [SuperSimpleProxyChat](https://github.com/wilderop/SuperSimpleProxyChat).
+Companion for [SuperSimpleProxyChat](https://github.com/wilderop/SuperSimpleProxyChat): network-wide `/ignore`, `/nick`, `/msg`, `/r`.
+
+Paper backends use the Maven plugin. The **Fabric** test sky uses the Gradle module in `fabric/`. Both talk to the same Redis keys (`bch:*`) and send `backchat:ignore` / `backchat:nick` plugin messages so Velocity chat, ignores, nicks, and PMs work on Fabric too.
 
 ## Commands
 
 | Command | What it does |
 |---|---|
-| `/ignore <player>` | Toggle ignore (local chat + proxy chat + mail) |
-| `/nick <MiniMessage>` | Set a colored/gradient nick |
+| `/ignore <player>` | Toggle ignore (local chat + proxy chat + PMs) |
+| `/nick <MiniMessage>` | Set a colored/gradient nick (shown on proxy chat) |
 | `/nick reset` | Clear nick |
-| `/msg <player> <text>` | PM. If they are on another server or offline, the proxy delivers or queues it |
+| `/msg <player> <text>` | PM across servers via Redis |
 | `/r <text>` | Reply to last PM |
 
 Aliases for `/msg`: `/m`, `/tell`, `/whisper`, `/w`
 
-## Install
+## Paper
 
-1. Build: `mvn clean package`
-2. Put `target/BackChatHelper.jar` on **every** Paper backend
-3. Put SuperSimpleProxyChat on Velocity
-
-## Config
-
-`plugins/BackChatHelper/config.yml`
-
-```yaml
-nick-cooldown-seconds: 60
-max-nick-length: 64
+```bash
+mvn clean package
+install-plugin-jar target/backchat.jar /mnt/pool/survival/plugins/backchat.jar
 ```
 
-Nicks and ignore lists are stored in `plugins/BackChatHelper/players/<uuid>.yml` and also synced through Velocity so they follow the player across backends.
+Config: `plugins/BackChatHelper/config.yml` (`redis-uri`, `server-name`).
+
+## Fabric
+
+```bash
+cd fabric && ./gradlew remapJar
+install-plugin-jar build/libs/BackChatHelper-1.2.0.jar /mnt/pool/fabric/mods/BackChatHelper.jar
+```
+
+Uses `/mnt/pool/skygate/redis.pass` at `10.0.0.3:6379`, `server-name=fabric`. Takes effect on the next Fabric JVM start.

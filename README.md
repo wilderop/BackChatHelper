@@ -1,7 +1,7 @@
 <!-- azpbmd-live -->
-**Live:** survival, pvp, creative, private, fabric
+**Live:** survival, pvp, creative, private, lobby, fabric
 
-Paper jar on survival, pvp, creative, and private. Fabric mod on fabric.
+Paper jar on survival, pvp, creative, private, and the Montreal lobby. Fabric mod on fabric.
 <!-- /azpbmd-live -->
 # BackChatHelper
 

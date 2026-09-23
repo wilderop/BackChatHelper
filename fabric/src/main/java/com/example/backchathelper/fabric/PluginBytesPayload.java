@@ -25,6 +25,10 @@ record PluginBytesPayload(CustomPacketPayload.Type<PluginBytesPayload> kind, byt
         }
     }
 
+    static CustomPacketPayload.Type<PluginBytesPayload> typeOf(String id) {
+        return new CustomPacketPayload.Type<>(Identifier.parse(id));
+    }
+
     static StreamCodec<FriendlyByteBuf, PluginBytesPayload> codec(
             CustomPacketPayload.Type<PluginBytesPayload> type) {
         return StreamCodec.of(

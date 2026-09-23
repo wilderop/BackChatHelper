@@ -1,2 +1,10 @@
+# BackChatHelper Configuration
 nick-cooldown-seconds: 60
 max-nick-length: 64
+
+# Shared ignore/nick/msg store. Leave empty in git.
+# Put the live URI only in plugins/BackChatHelper/config.yml on each backend.
+redis-uri: ""
+
+# Name of this backend in Velocity (survival, lobby, pvp, creative, private).
+server-name: survival

@@ -6,7 +6,7 @@ base {
     archivesName.set("BackChatHelper")
 }
 
-version = "1.2.0"
+version = "1.2.4"
 group = "com.example"
 
 loom {

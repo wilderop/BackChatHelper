@@ -11,7 +11,7 @@ Paper backends use the Maven plugin. The **Fabric** test sky uses the Gradle mod
 | `/ignore <player>` | Toggle ignore (local chat + proxy chat + PMs) |
 | `/nick <MiniMessage>` | Set a colored/gradient nick (shown on proxy chat) |
 | `/nick reset` | Clear nick |
-| `/msg <player> <text>` | PM across servers via Redis |
+| `/msg <player> <text>` | PM across servers via Redis. Offline players get it on join (max 100 queued, 30 days). Lookup is Redis `GET` by name, never a playerdata scan. |
 | `/r <text>` | Reply to last PM |
 
 Aliases for `/msg`: `/m`, `/tell`, `/whisper`, `/w`
@@ -29,7 +29,7 @@ Config: `plugins/BackChatHelper/config.yml` (`redis-uri`, `server-name`).
 
 ```bash
 cd fabric && ./gradlew remapJar
-install-plugin-jar build/libs/BackChatHelper-1.2.0.jar /mnt/pool/fabric/mods/BackChatHelper.jar
+install-plugin-jar build/libs/BackChatHelper-1.2.4.jar /mnt/pool/fabric/mods/BackChatHelper.jar
 ```
 
-Uses `/mnt/pool/skygate/redis.pass` at `10.0.0.3:6379`, `server-name=fabric`. Takes effect on the next Fabric JVM start.
+Uses `/mnt/pool/skygate/redis.pass` at `127.0.0.1:6379`, `server-name=fabric`. Takes effect on the next Fabric JVM start.
